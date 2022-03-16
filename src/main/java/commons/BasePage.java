@@ -17,6 +17,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pageUIs.BasePageUI;
 
 public class BasePage {
   
@@ -362,6 +363,11 @@ public class BasePage {
             getWebElement(driver, locatorType));
   }
   
+  protected void removeAttributeInDOM(WebDriver driver, String locatorType, String attributeRemove, String...dynamicValues) {
+    ((JavascriptExecutor) driver).executeScript("arguments[0].removeAttribute('" + attributeRemove + "');",
+            getWebElement(driver, getDynamicLocatorType(locatorType, dynamicValues)));
+  }
+  
   protected boolean areJQueryAndJSLoadedSuccess(WebDriver driver) {
     WebDriverWait explicitWait = new WebDriverWait(driver, longTime);
     ExpectedCondition<Boolean> jQueryLoad = new ExpectedCondition<Boolean>() {
@@ -469,5 +475,39 @@ public class BasePage {
     driver.manage().timeouts().implicitlyWait(timeOut, TimeUnit.SECONDS);
   }
   
+  public void openManagerTabByText(WebDriver driver, String tabName) {
+    waitForElementClickable(driver, BasePageUI.DYNAMIC_MANAGER_TAB_BY_TEXT, tabName);
+    clickToElement(driver, BasePageUI.DYNAMIC_MANAGER_TAB_BY_TEXT, tabName);
+  }
+  
+  public void enterToTextboxByLabel(WebDriver driver, String textboxLabel, String value) {
+    if(textboxLabel.equals("Date of Birth")){
+      removeAttributeInDOM(driver, BasePageUI.DYNAMIC_TEXTBOX_BY_LABEL, "type", textboxLabel );
+    }
+    waitForElementVisible(driver, BasePageUI.DYNAMIC_TEXTBOX_BY_LABEL, textboxLabel);
+    senkeyToElement(driver, BasePageUI.DYNAMIC_TEXTBOX_BY_LABEL, value, textboxLabel);
+  }
+  
+  public void enterToTextareaByLabel(WebDriver driver, String textareaLabel, String value) {
+    waitForElementVisible(driver, BasePageUI.DYNAMIC_TEXTAREA_BY_LABEL, textareaLabel);
+    senkeyToElement(driver, BasePageUI.DYNAMIC_TEXTAREA_BY_LABEL, value, textareaLabel);
+  }
+  
+  public void clickToButtonByValue(WebDriver driver, String buttonValue) {
+    waitForElementClickable(driver, BasePageUI.DYNAMIC_BUTTON_BY_VALUE, buttonValue);
+    clickToElement(driver, BasePageUI.DYNAMIC_BUTTON_BY_VALUE, buttonValue);
+  }
+  
+  public void selectToRadioButton(WebDriver driver, String radioButtonValue) {
+    waitForElementClickable(driver, BasePageUI.RADIO_BUTTON, radioButtonValue);
+    checkTheCheckboxOrRadio(driver, BasePageUI.RADIO_BUTTON, radioButtonValue);
+  }
+  
+  public String getRowValueByRowName(WebDriver driver, String rowName) {
+    waitForElementVisible(driver, BasePageUI.DYNAMIC_ROW_VALUE_BY_ROW_NAME, rowName);
+    return getTextElement(driver, BasePageUI.DYNAMIC_ROW_VALUE_BY_ROW_NAME, rowName);
+  }
+  
   private long longTime = GlobalConstants.LONG_TIME;
+
 }
