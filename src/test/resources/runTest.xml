@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="BankGuru">
+	<parameter name="url" value="https://demo.guru99.com/v4/"/>
+
+	<test name="Run on CHROME">
+		<parameter name="browser" value="chrome"/>
+		<classes>
+			<class name="com.bankguru.payment.BankGuru_01_Payment"/>
+		</classes>
+	</test>
+
+</suite>
