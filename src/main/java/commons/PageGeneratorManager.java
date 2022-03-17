@@ -1,9 +1,8 @@
 package commons;
 
 import org.openqa.selenium.WebDriver;
-import pageObjects.LoginPageObject;
-import pageObjects.ManagerPageObject;
-import pageObjects.NewCustomerPageObject;
+import pageObjects.bankguru.LoginPageObject;
+import pageObjects.bankguru.ManagerPageObject;
 
 public class PageGeneratorManager {
   public static LoginPageObject getLoginPageObject(WebDriver driver){
@@ -14,7 +13,4 @@ public class PageGeneratorManager {
     return new ManagerPageObject(driver);
   }
   
-  public static NewCustomerPageObject getNewCustomerPageObject(WebDriver driver){
-    return new NewCustomerPageObject(driver);
-  }
 }

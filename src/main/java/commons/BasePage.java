@@ -17,7 +17,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pageUIs.BasePageUI;
+import pageUIs.bankguru.BasePageUI;
 
 public class BasePage {
   
@@ -317,6 +317,10 @@ public class BasePage {
     return getWebElement(driver, locatorType).isEnabled();
   }
   
+  protected boolean isElementEnabled(WebDriver driver, String locatorType, String...dynamicValues) {
+    return getWebElement(driver, getDynamicLocatorType(locatorType, dynamicValues)).isEnabled();
+  }
+  
   protected void switchToIframeFrame(WebDriver driver, String locatorType) {
     driver.switchTo().frame(getWebElement(driver, locatorType));
   }
@@ -503,9 +507,23 @@ public class BasePage {
     checkTheCheckboxOrRadio(driver, BasePageUI.RADIO_BUTTON, radioButtonValue);
   }
   
+  public void selectItemInDropdownByName(WebDriver driver, String dropdownName, String valueItem) {
+    waitForElementClickable(driver, BasePageUI.DYNAMIC_DROPDOWN_BY_NAME, valueItem);
+    selectItemInDropdown(driver, BasePageUI.DYNAMIC_DROPDOWN_BY_NAME, valueItem);
+  }
+  
   public String getRowValueByRowName(WebDriver driver, String rowName) {
     waitForElementVisible(driver, BasePageUI.DYNAMIC_ROW_VALUE_BY_ROW_NAME, rowName);
     return getTextElement(driver, BasePageUI.DYNAMIC_ROW_VALUE_BY_ROW_NAME, rowName);
+  }
+  
+  public boolean isFieldEnabledByLabel(WebDriver driver, String textboxLabel) {
+    return isElementEnabled(driver, BasePageUI.DYNAMIC_TEXTBOX_BY_LABEL, textboxLabel);
+  }
+  
+  public String getSuccessMessageAtTableID(WebDriver driver, String tableID) {
+    waitForElementVisible(driver, BasePageUI.SUCCESS_MESSAGE_AT_TABLE_ID, tableID);
+    return getTextElement(driver, BasePageUI.SUCCESS_MESSAGE_AT_TABLE_ID, tableID);
   }
   
   private long longTime = GlobalConstants.LONG_TIME;
