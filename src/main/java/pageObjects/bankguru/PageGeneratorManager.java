@@ -1,4 +1,4 @@
-package commons;
+package pageObjects.bankguru;
 
 import org.openqa.selenium.WebDriver;
 import pageObjects.bankguru.LoginPageObject;

@@ -479,6 +479,7 @@ public class BasePage {
     driver.manage().timeouts().implicitlyWait(timeOut, TimeUnit.SECONDS);
   }
   
+  // BankGuru
   public void openManagerTabByText(WebDriver driver, String tabName) {
     waitForElementClickable(driver, BasePageUI.DYNAMIC_MANAGER_TAB_BY_TEXT, tabName);
     clickToElement(driver, BasePageUI.DYNAMIC_MANAGER_TAB_BY_TEXT, tabName);
@@ -527,5 +528,25 @@ public class BasePage {
   }
   
   private long longTime = GlobalConstants.LONG_TIME;
-
+  
+  // Nopcommerce
+  public void clickToButtonByText(WebDriver driver, String buttonText) {
+    waitForElementClickable(driver, BasePageUI.DYNAMIC_BUTTON_BY_TEXT, buttonText);
+    clickToElement(driver, BasePageUI.DYNAMIC_BUTTON_BY_TEXT, buttonText);
+  }
+  
+  public String getErrorMessageAtFieldByID(WebDriver driver, String fieldID) {
+    waitForElementVisible(driver, BasePageUI.DYNAMIC_ERROR_MESSAGE_AT_FIELD_BY_ID, fieldID);
+    return getTextElement(driver, BasePageUI.DYNAMIC_ERROR_MESSAGE_AT_FIELD_BY_ID, fieldID);
+  }
+  
+  public void openPageInAreaByText(WebDriver driver, String areaName, String pageName) {
+    waitForElementClickable(driver, BasePageUI.DYNAMIC_PAGE_IN_AREA_BY_TEXT, areaName, pageName);
+    clickToElement(driver, BasePageUI.DYNAMIC_PAGE_IN_AREA_BY_TEXT, areaName, pageName);
+  }
+  
+  public void enterToTextboxByID(WebDriver driver, String textboxID, String value) {
+    waitForElementVisible(driver, BasePageUI.DYNAMIC_TEXTBOX_BY_ID, textboxID);
+    senkeyToElement(driver, BasePageUI.DYNAMIC_TEXTBOX_BY_ID, value, textboxID);
+  }
 }

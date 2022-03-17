@@ -1,7 +1,7 @@
 package com.bankguru.payment;
 
 import commons.BaseTest;
-import commons.PageGeneratorManager;
+import pageObjects.bankguru.PageGeneratorManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;

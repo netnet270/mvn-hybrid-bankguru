@@ -1,7 +1,6 @@
 package pageObjects.bankguru;
 
 import commons.BasePage;
-import commons.PageGeneratorManager;
 import org.openqa.selenium.WebDriver;
 import pageUIs.bankguru.LoginPageUI;
 
