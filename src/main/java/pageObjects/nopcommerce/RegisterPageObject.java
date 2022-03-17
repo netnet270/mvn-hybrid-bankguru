@@ -15,9 +15,5 @@ public class RegisterPageObject extends BasePage {
     waitForElementVisible(driver, RegisterPageUI.REGISTER_SUCCESS_MESSAGE);
     return getTextElement(driver, RegisterPageUI.REGISTER_SUCCESS_MESSAGE);
   }
-  
-  public String getEmailExistMessage() {
-    waitForElementVisible(driver, RegisterPageUI.EMAIL_EXIST_MESSAGE);
-    return getTextElement(driver, RegisterPageUI.EMAIL_EXIST_MESSAGE);
-  }
+
 }

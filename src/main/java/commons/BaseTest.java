@@ -5,11 +5,13 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
 import reportConfig.VerificationFailures;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -33,7 +35,11 @@ public class BaseTest {
       
     } else if( browserName.equals("chrome")){
       WebDriverManager.chromedriver().setup();
-      driver = new ChromeDriver();
+      File file = new File(GlobalConstants.PROJECT_PATH + "/browserExtensions/extension_1_6_6_0.crx");
+      ChromeOptions options = new ChromeOptions();
+      options.addExtensions(file);
+      
+      driver = new ChromeDriver(options);
     }
   
     driver.manage().timeouts().implicitlyWait(GlobalConstants.SHORT_TIME, TimeUnit.SECONDS);

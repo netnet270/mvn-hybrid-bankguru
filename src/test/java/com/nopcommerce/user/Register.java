@@ -142,7 +142,7 @@ public class Register extends BaseTest {
     registerPage.clickToButtonByText(driver, "Register");
   
     log.info("Email_Exist_04 - Step 08: Verify email exist message is displayed");
-    verifyEquals(registerPage.getEmailExistMessage(), "The specified email already exists");
+    verifyEquals(registerPage.getSummaryErrorMessage(driver), "The specified email already exists");
   }
   
   @Test

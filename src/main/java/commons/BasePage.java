@@ -18,6 +18,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageUIs.bankguru.BasePageUI;
+import pageUIs.nopcommerce.RegisterPageUI;
 
 public class BasePage {
   
@@ -548,5 +549,15 @@ public class BasePage {
   public void enterToTextboxByID(WebDriver driver, String textboxID, String value) {
     waitForElementVisible(driver, BasePageUI.DYNAMIC_TEXTBOX_BY_ID, textboxID);
     senkeyToElement(driver, BasePageUI.DYNAMIC_TEXTBOX_BY_ID, value, textboxID);
+  }
+  
+  public String getSummaryErrorMessage(WebDriver driver) {
+    waitForElementVisible(driver, RegisterPageUI.SUMMARY_ERROR_MESSAGE);
+    return getTextElement(driver, RegisterPageUI.SUMMARY_ERROR_MESSAGE);
+  }
+  
+  public boolean isHeaderLinkDisplayedByText(WebDriver driver, String linkText) {
+    waitForElementClickable(driver, BasePageUI.DYNAMIC_PAGE_IN_AREA_BY_TEXT, "header", linkText);
+    return isElementDisplayed(driver, BasePageUI.DYNAMIC_PAGE_IN_AREA_BY_TEXT, "header", linkText);
   }
 }
