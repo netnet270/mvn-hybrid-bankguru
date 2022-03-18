@@ -16,4 +16,12 @@ public class BasePageUI {
   public static final String DYNAMIC_ERROR_MESSAGE_AT_FIELD_BY_ID = "xpath=//span[@class='field-validation-error']/span[@id='%s']";
   public static final String DYNAMIC_PAGE_IN_AREA_BY_TEXT = "xpath=//div[@class='%s']//a[text()='%s']";
   public static final String DYNAMIC_TEXTBOX_BY_ID = "xpath=//input[@id='%s']";
+  public static final String DYNAMIC_RADIO_BUTTON_BY_LABEL = "xpath=//label[text()='%s']/preceding-sibling::input";
+  public static final String DYNAMIC_MENU_PAGE_BY_NAME = "xpath=//ul[@class='top-menu notmobile']//a[contains(.,'%s')]";
+  public static final String DYNAMIC_PRODUCT_TITLE = "xpath=//h2[@class='product-title']/a[text()='%s']";
+  public static final String REVIEW_LINK_BY_TEXT = "xpath=//div[@class='product-review-links']/a[text()='%s']";
+  public static final String PRODUCT_REVIEW_TITLE = "xpath=//div[@class='review-title' and contains(.,'%s')]" ;
+  public static final String BAR_NOTIFICATION_CONTENT = "css=.bar-notification p.content";
+  public static final String BAR_NOTIFICATION_CLOSE_BUTTON = "css=.bar-notification span.close";
+  public static final String DYNAMIC_TEXTAREA_BY_ID = "xpath=//textarea[@id='%s']";
 }

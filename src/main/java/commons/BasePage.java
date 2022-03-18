@@ -191,6 +191,11 @@ public class BasePage {
     return select.getFirstSelectedOption().getText();
   }
   
+  protected String getSelectedItemInDropdown(WebDriver driver, String locatorType, String...dynamicValues) {
+    Select select = new Select(getWebElement(driver, getDynamicLocatorType(locatorType, dynamicValues)));
+    return select.getFirstSelectedOption().getText();
+  }
+  
   protected boolean isDropdownMultiple(WebDriver driver, String locatorType) {
     Select select = new Select(getWebElement(driver, locatorType));
     return select.isMultiple();
@@ -510,8 +515,8 @@ public class BasePage {
   }
   
   public void selectItemInDropdownByName(WebDriver driver, String dropdownName, String valueItem) {
-    waitForElementClickable(driver, BasePageUI.DYNAMIC_DROPDOWN_BY_NAME, valueItem);
-    selectItemInDropdown(driver, BasePageUI.DYNAMIC_DROPDOWN_BY_NAME, valueItem);
+    waitForElementClickable(driver, BasePageUI.DYNAMIC_DROPDOWN_BY_NAME, dropdownName);
+    selectItemInDropdown(driver, BasePageUI.DYNAMIC_DROPDOWN_BY_NAME, valueItem, dropdownName);
   }
   
   public String getRowValueByRowName(WebDriver driver, String rowName) {
@@ -551,6 +556,11 @@ public class BasePage {
     senkeyToElement(driver, BasePageUI.DYNAMIC_TEXTBOX_BY_ID, value, textboxID);
   }
   
+  public void enterToTextareaByID(WebDriver driver, String textareaID, String value) {
+    waitForElementVisible(driver, BasePageUI.DYNAMIC_TEXTAREA_BY_ID, textareaID);
+    senkeyToElement(driver, BasePageUI.DYNAMIC_TEXTAREA_BY_ID, value, textareaID);
+  }
+  
   public String getSummaryErrorMessage(WebDriver driver) {
     waitForElementVisible(driver, RegisterPageUI.SUMMARY_ERROR_MESSAGE);
     return getTextElement(driver, RegisterPageUI.SUMMARY_ERROR_MESSAGE);
@@ -560,4 +570,63 @@ public class BasePage {
     waitForElementClickable(driver, BasePageUI.DYNAMIC_PAGE_IN_AREA_BY_TEXT, "header", linkText);
     return isElementDisplayed(driver, BasePageUI.DYNAMIC_PAGE_IN_AREA_BY_TEXT, "header", linkText);
   }
+  
+  public String getTexboxValueByID(WebDriver driver, String textboxID) {
+    waitForElementVisible(driver, BasePageUI.DYNAMIC_TEXTBOX_BY_ID, textboxID);
+    return getAttributeValue(driver, BasePageUI.DYNAMIC_TEXTBOX_BY_ID, "value", textboxID);
+  }
+  
+  public void selectToRadioButtonByLabel(WebDriver driver, String radioButtonLabel) {
+    waitForElementClickable(driver, BasePageUI.DYNAMIC_RADIO_BUTTON_BY_LABEL, radioButtonLabel);
+    checkTheCheckboxOrRadio(driver, BasePageUI.DYNAMIC_RADIO_BUTTON_BY_LABEL, radioButtonLabel);
+  }
+  
+  public boolean isRadioButtonSelectedByLabel(WebDriver driver, String radioButtonLabel) {
+    waitForElementVisible(driver, BasePageUI.DYNAMIC_RADIO_BUTTON_BY_LABEL, radioButtonLabel);
+    return isElementSelected(driver, BasePageUI.DYNAMIC_RADIO_BUTTON_BY_LABEL, radioButtonLabel);
+  }
+  
+  public String getSelectedValueInDropdownByName(WebDriver driver, String dropdownName) {
+    waitForElementVisible(driver, BasePageUI.DYNAMIC_DROPDOWN_BY_NAME, dropdownName);
+    return getSelectedItemInDropdown(driver, BasePageUI.DYNAMIC_DROPDOWN_BY_NAME, dropdownName);
+  }
+  
+  public void openMenuPage(WebDriver driver, String menuPageName) {
+    waitForElementClickable(driver, BasePageUI.DYNAMIC_MENU_PAGE_BY_NAME, menuPageName);
+    clickToElement(driver, BasePageUI.DYNAMIC_MENU_PAGE_BY_NAME, menuPageName);
+  }
+  
+  public void openSubMenuPage(WebDriver driver, String menuPageName, String subMenuPageName) {
+    waitForElementClickable(driver, BasePageUI.DYNAMIC_MENU_PAGE_BY_NAME, menuPageName);
+    hoverMouseToElement(driver, BasePageUI.DYNAMIC_MENU_PAGE_BY_NAME, menuPageName);
+  
+    waitForElementClickable(driver, BasePageUI.DYNAMIC_MENU_PAGE_BY_NAME, subMenuPageName);
+    clickToElement(driver, BasePageUI.DYNAMIC_MENU_PAGE_BY_NAME, subMenuPageName);
+  }
+  
+  public void clickToProductTitleByText(WebDriver driver, String productTitle) {
+    waitForElementClickable(driver, BasePageUI.DYNAMIC_PRODUCT_TITLE, productTitle);
+    clickToElement(driver, BasePageUI.DYNAMIC_PRODUCT_TITLE, productTitle);
+  }
+  
+  public void clickToReviewLinkByText(WebDriver driver, String linkText) {
+    waitForElementClickable(driver, BasePageUI.REVIEW_LINK_BY_TEXT, linkText);
+    clickToElement(driver, BasePageUI.REVIEW_LINK_BY_TEXT, linkText);
+  }
+  
+  public boolean isProductReviewDisplay(WebDriver driver, String text) {
+    waitForElementVisible(driver, BasePageUI.PRODUCT_REVIEW_TITLE, text);
+    return isElementDisplayed(driver, BasePageUI.PRODUCT_REVIEW_TITLE, text);
+  }
+  
+  public String getBarNotificationContent(WebDriver driver) {
+    waitForElementVisible(driver, BasePageUI.BAR_NOTIFICATION_CONTENT);
+    return getTextElement(driver, BasePageUI.BAR_NOTIFICATION_CONTENT);
+  }
+  
+  public void closeBarNotification(WebDriver driver) {
+    waitForElementClickable(driver, BasePageUI.BAR_NOTIFICATION_CLOSE_BUTTON);
+    clickToElement(driver, BasePageUI.BAR_NOTIFICATION_CLOSE_BUTTON);
+  }
+
 }

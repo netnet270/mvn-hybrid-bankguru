@@ -13,6 +13,8 @@ import reportConfig.VerificationFailures;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -38,6 +40,14 @@ public class BaseTest {
       File file = new File(GlobalConstants.PROJECT_PATH + "/browserExtensions/extension_1_6_6_0.crx");
       ChromeOptions options = new ChromeOptions();
       options.addExtensions(file);
+      options.addArguments("--disable-infobars");
+      options.addArguments("--disable-notification");
+      options.addArguments("--disable-geolocation");
+      
+      Map<String, Object> prefs = new HashMap<String, Object>();
+      prefs.put("credentials_enable_service", false);
+      prefs.put("profile.password_manager_enabled", false);
+      options.setExperimentalOption("prefs", prefs);
       
       driver = new ChromeDriver(options);
     }
