@@ -576,7 +576,7 @@ public class BasePage {
     return getAttributeValue(driver, BasePageUI.DYNAMIC_TEXTBOX_BY_ID, "value", textboxID);
   }
   
-  public void selectToRadioButtonByLabel(WebDriver driver, String radioButtonLabel) {
+  public void clickToRadioButtonByLabel(WebDriver driver, String radioButtonLabel) {
     waitForElementClickable(driver, BasePageUI.DYNAMIC_RADIO_BUTTON_BY_LABEL, radioButtonLabel);
     checkTheCheckboxOrRadio(driver, BasePageUI.DYNAMIC_RADIO_BUTTON_BY_LABEL, radioButtonLabel);
   }
@@ -628,5 +628,9 @@ public class BasePage {
     waitForElementClickable(driver, BasePageUI.BAR_NOTIFICATION_CLOSE_BUTTON);
     clickToElement(driver, BasePageUI.BAR_NOTIFICATION_CLOSE_BUTTON);
   }
-
+  
+  public void clickToCheckboxByLabel(WebDriver driver, String checkboxLabel) {
+    waitForElementClickable(driver, BasePageUI.DYNAMIC_CHECKBOX_BY_LABEL, checkboxLabel);
+    checkTheCheckboxOrRadio(driver, BasePageUI.DYNAMIC_CHECKBOX_BY_LABEL, checkboxLabel);
+  }
 }

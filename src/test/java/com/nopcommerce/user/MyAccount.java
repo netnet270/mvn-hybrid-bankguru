@@ -74,7 +74,7 @@ public class MyAccount extends BaseTest {
     verifyEquals(myAccountPage.getTexboxValueByID(driver, "Email"), email);
     
     log.info("CustomerInfo_01 - Step 04: Select new value to Gender radio button");
-    myAccountPage.selectToRadioButtonByLabel(driver, "Male");
+    myAccountPage.clickToRadioButtonByLabel(driver, "Male");
     
     log.info("CustomerInfo_01 - Step 05: Enter new value to First Name textbox with value: " + editFirstName);
     myAccountPage.enterToTextboxByID(driver, "FirstName", editFirstName);

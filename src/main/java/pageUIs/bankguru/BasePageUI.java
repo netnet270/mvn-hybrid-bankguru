@@ -24,4 +24,5 @@ public class BasePageUI {
   public static final String BAR_NOTIFICATION_CONTENT = "css=.bar-notification p.content";
   public static final String BAR_NOTIFICATION_CLOSE_BUTTON = "css=.bar-notification span.close";
   public static final String DYNAMIC_TEXTAREA_BY_ID = "xpath=//textarea[@id='%s']";
+  public static final String DYNAMIC_CHECKBOX_BY_LABEL = "xpath=//label[text()='%s']/preceding-sibling::input";
 }

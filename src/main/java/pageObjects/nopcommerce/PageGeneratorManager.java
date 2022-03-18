@@ -26,4 +26,8 @@ public class PageGeneratorManager {
   public static ProductReviewPageObject getProductReviewPageObject(WebDriver driver) {
     return new ProductReviewPageObject(driver);
   }
+  
+  public static SearchPageObject getSearchPageObject(WebDriver driver) {
+    return new SearchPageObject(driver);
+  }
 }
