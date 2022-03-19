@@ -30,4 +30,8 @@ public class PageGeneratorManager {
   public static SearchPageObject getSearchPageObject(WebDriver driver) {
     return new SearchPageObject(driver);
   }
+  
+  public static NotebooksPageObject getNotebooksPageObject(WebDriver driver) {
+    return new NotebooksPageObject(driver);
+  }
 }

@@ -25,4 +25,9 @@ public class BasePageUI {
   public static final String BAR_NOTIFICATION_CLOSE_BUTTON = "css=.bar-notification span.close";
   public static final String DYNAMIC_TEXTAREA_BY_ID = "xpath=//textarea[@id='%s']";
   public static final String DYNAMIC_CHECKBOX_BY_LABEL = "xpath=//label[text()='%s']/preceding-sibling::input";
+  public static final String PRODUCT_NAME = "css=.product-item h2.product-title";
+  public static final String PRODUCT_PRICE = "css=.product-item .actual-price";
+  public static final String PAGINATION_PAGE_BY_NUMBER = "xpath=//div[@class='pager']//li[contains(.,'%s')]";
+  public static final String PAGINATION_PAGE_ACTIVE_BY_NUMBER = "xpath=//div[@class='pager']//li[@class='current-page' and contains(.,'%s')]";
+  public static final String PAGINATION_PAGE = "xpath=//div[@class='pager']";
 }

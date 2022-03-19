@@ -16,12 +16,12 @@ public class SearchPageObject extends BasePage {
     return getTextElement(driver, SearchPageUI.SEARCH_RESULTS_MESSAGE);
   }
   
-  public int getSizeProductFounded() {
-    return getElementsSize(driver, SearchPageUI.PRODUCT_TITLE);
-  }
-  
   public void clickToSearchButton() {
     waitForElementClickable(driver, SearchPageUI.SEARCH_BUTTON);
     clickToElement(driver, SearchPageUI.SEARCH_BUTTON);
+  }
+  
+  public int getProductsSizeDisplayed() {
+    return getElementsSize(driver, SearchPageUI.PRODUCT_TITLE);
   }
 }
